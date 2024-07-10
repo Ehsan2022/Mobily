@@ -1,3 +1,6 @@
+<?php
+   include("db_connect.php");
+   ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,74 +29,75 @@
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
         </ol>
+
         <div class="carousel-inner" style="background-color:white; box-shadow:0px 1px 10px grey;">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="text-center  col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/img/ip13f.jpg" alt="">
-                            <img class="img-fluid" src="./assets/img/ip13b.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left align-self-center">
-                                <h1 class="h1 text-success">Apple</h1>
-                                <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                     Doloribus necessitatibus quidem, natus eius beatae modi sequi
-                                      asperiores minima vitae neque qui sapiente ratione,
-                                     incidunt non cumque, quia molestiae quisquam quis.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="text-center col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="./assets/img/s24f.jpg" alt="">
-                        <img class="img-fluid" src="./assets/img/s24b.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1 text-success">Samsung</h1>
-                                <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                     Doloribus necessitatibus quidem, natus eius beatae modi sequi
-                                      asperiores minima vitae neque qui sapiente ratione,
-                                     incidunt non cumque, quia molestiae quisquam quis.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="text-center col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="./assets/img/xi14f.jpg" alt="">
-                        <img class="img-fluid" src="./assets/img/xi14b.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1 text-success">Xiaomi</b></h1>
-                                <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                     Doloribus necessitatibus quidem, natus eius beatae modi sequi
-                                      asperiores minima vitae neque qui sapiente ratione,
-                                     incidunt non cumque, quia molestiae quisquam quis.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php
+                    $sql = "SELECT * FROM `mobile` INNER JOIN `mobile_brand` order by mobile_id desc";
+                    $selectQuery = mysqli_query($Conn,$sql);
+                    $num = 0 ;
+                    while($row = mysqli_fetch_assoc($selectQuery)){
+                            $mobile_id = $row['mobile_id'];
+                            $mobile_fimg = $row['fimg'];
+                            $mobile_bimg = $row['bimg'];
+                            $model = $row['mobile_model'];
+                            $color = $row['mobile_color'];
+                            $ram = $row['mobile_ram'];
+                            $rom = $row['mobile_rom'];    
+                            $fcam = $row['mobile_front_cam'];    
+                            $rcam = $row['mobile_back_cam'];  
+                            $brand_name = $row['mb_name'];  
+                            if ($num == 0) {
+                                echo "
+                                    <div class='carousel-item active'>
+                                       <div class='container'>
+                                           <div class='row p-5'>
+                                               <div class='text-center  col-md-8 col-lg-5 order-lg-last'>
+                                                   <img class='img-fluid' src='./assets/img/ip13f.jpg' alt=''>
+                                                   <img class='img-fluid' src='./assets/img/ip13b.jpg' alt=''>
+                                               </div>
+                                               <div class='col-lg-7 mb-0 d-flex align-items-center'>
+                                                   <div class='text-align-left align-self-center'>
+                                                            <h1 class='   text-success'>$brand_name</h1>
+                                                       
+                                                            <h1 class=' h1'>$model Storage : $rom</h1> 
+                                                            <a class='btn btn-success col-12'>Click For More...</a>
+                                                       
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    </div>   
+                                 ";
+                            }  else {
+                                echo "
+                                    <div class='carousel-item '>
+                                       <div class='container'>
+                                           <div class='row p-5'>
+                                               <div class='text-center  col-md-8 col-lg-5 order-lg-last'>
+                                                   <img class='img-fluid' src='./assets/img/ip13f.jpg' alt=''>
+                                                   <img class='img-fluid' src='./assets/img/ip13b.jpg' alt=''>
+                                               </div>
+                                               <div class='col-lg-7 mb-0 d-flex align-items-center'>
+                                                   <div class='text-align-left align-self-center'>
+                                                            <h1 class='   text-success'>$brand_name</h1>
+                                                       
+                                                            <h1 class=' h1'>$model Storage : $rom</h1> 
+                                                            <a class='btn btn-success col-12'>Click For More...</a>
+                                                       
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                    </div> 
+                                ";
+                            }
+                           
+                            if ($num == 3) break;
+                            $num++;
+                    }
+            ?>
         </div>
+        
         <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
             <i class="fas fa-chevron-left"></i>
         </a>
