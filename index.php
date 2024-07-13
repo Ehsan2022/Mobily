@@ -23,14 +23,14 @@
 
 
     <!-- Start Banner Hero -->
-    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+    <div id="template-mo-zay-hero-carousel" class="carousel slide mt-5" data-bs-ride="carousel">
         <ol class="carousel-indicators">
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
             <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
         </ol>
 
-        <div class="carousel-inner" style="background-color:white; box-shadow:0px 1px 10px grey;">
+        <div class="carousel-inner" style="background-color:white; ">
             <?php
                     $sql = "SELECT * FROM `mobile` INNER JOIN `mobile_brand` order by mobile_id desc";
                     $selectQuery = mysqli_query($Conn,$sql);
