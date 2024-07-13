@@ -46,12 +46,10 @@
 </header>
 
 
-<nav class="navbar navbar-expand-lg navbar-light shadow">
+<nav class="navbar navbar-expand-lg  shadow">
         <div class="container ">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                Mobily
-            </a>
+            <a class="navbar-brand text-success h3 " href="index.html">Mobily</a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

@@ -15,9 +15,10 @@
     include("searchModal.php");
    ?>
 
-<h1>This is your cart!</h1>
-         
+<h1 class="h1 text-center text-success pb-4 mt-4"> Cart</h1>
+
 <div class="col-12 col-md-4 mb-4 text-center d-block mx-auto product-cart">
+
       <div class="card h-100 py-3">
          <a href="shop-single.html">
                <img class="img-fluid" src="./assets/img/ip13f.jpg" alt="">

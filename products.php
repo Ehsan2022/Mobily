@@ -4,6 +4,7 @@
 <head>
     <title>Mobile Shop - Product Listing Page</title>
     <?php
+       include("db_connect.php");
    include('generalLinks.php');
    ?>
 </head>
@@ -23,26 +24,49 @@
 
     <!-- Start Content -->
     <div class="container py-5">
-        <div class="row">
+        <div class="row justify-content-center">
+            <?php
+                $sql = "SELECT * FROM `mobile` order by mobile_id desc";
+                $selectQuery = mysqli_query($Conn,$sql);
+                $num=1;
+                while(($row = mysqli_fetch_assoc($selectQuery)) && $num <= 7){
+                    $mobile_id = $row['mobile_id'];
+                    $mobile_fimg = $row['fimg'];
+                    $mobile_bimg = $row['bimg'];
+                    $model = $row['mobile_model'];
+                    $color = $row['mobile_color'];
+                    $ram = $row['mobile_ram'];
+                    $rom = $row['mobile_rom'];    
+                    $fcam = $row['mobile_front_cam'];    
+                    $rcam = $row['mobile_back_cam'];  
+                    if ($mobile_fimg == null) {
+                        $mobile_fimg = "assets/img/ip13f.jpg";
+                    }
 
-            <div class="col-lg-12">
-               
-             
-
-                <div div="row">
-                    <ul class="pagination pagination-lg justify-content-center">
-                        <li class="page-item ">
-                            <a class="page-link active  shadow-sm border-top-0 " href="#" tabindex="-1">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link   shadow-sm border-top-0 text-dark" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link  shadow-sm border-top-0  text-dark" href="#">3</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                        echo "
+                            <div class='col-12 col-md-4 col-lg-3 mb-4 text-center '>
+                                <div class='card h-100 py-3 shadow'>
+                                    <a>
+                                        <img class='img-fluid' src='$mobile_fimg' alt='Mobile Image'>
+                                    </a>
+                                    <div class='card-body'>
+                                        <h3 class='h3 card-text'>$model</h3>
+                                        <p >Storage : $rom</p>
+                                        <p>Color : <a class='btn' style='background-color:$color;box-shadow:0 0 10px 3px black;margin:0 10px;'></a></p>
+                                        <a href='' class='btn btn-outline-primary cartButton'>
+                                            <i class='fa fa-cart-arrow-down'></i>
+                                        </a>
+                                        <a href='' class='btn btn-outline-success moreButton'>
+                                            <i class='fa fa-ellipsis-h'></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            ";
+                            $num++;
+                }
+                
+            ?>
 
         </div>
     </div>

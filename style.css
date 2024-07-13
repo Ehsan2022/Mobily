@@ -1,7 +1,9 @@
-.cartButton {
-  border: none;
-  background-color: rgb(100, 243, 100);
-  text-decoration: none;
+
+.cartButton:hover:after {
+  content: "Add To Cart";
+}
+.moreButton:hover:after {
+  content: "Read More";
 }
 
 

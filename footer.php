@@ -37,7 +37,7 @@
                     <ul class="list-unstyled text-light footer-link-list">
                         <li><a class="text-decoration-none" href="index.php">Home</a></li>
                         <li><a class="text-decoration-none" href="about.php">About </a></li>
-                        <li><a class="text-decoration-none" href="#">PODUCT</a></li>
+                        <li><a class="text-decoration-none" href="product.php">Product</a></li>
                         <li><a class="text-decoration-none" href="contact.php">Contact</a></li>
                     </ul>
                 </div>
